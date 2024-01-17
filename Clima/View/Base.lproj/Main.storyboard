@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="WeatherViewController" customModule="Clima" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-ww-fZu">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3et-2z-vlj">
+                                <rect key="frame" x="10" y="60" width="373" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.tip.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="E7E-tX-pSr">
+                                        <rect key="frame" x="0.0" y="1" width="40" height="38.666666666666671"/>
+                                        <color key="tintColor" name="MyWeatherColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="cip-Ac-LKT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hig-3k-o4v">
+                                        <rect key="frame" x="45" y="0.0" width="283" height="40"/>
+                                        <color key="backgroundColor" red="0.15294116739999999" green="0.2588235438" blue="0.27450981740000002" alpha="0.41023596938775508" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-im-NAo">
+                                        <rect key="frame" x="333" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="gbe-0v-pbg"/>
+                                        </constraints>
+                                        <color key="tintColor" name="MyWeatherColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="onClickSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QSl-WC-Qcn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sMW-f5-XSD"/>
+                                </constraints>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vjm-dq-I4U">
+                                <rect key="frame" x="273" y="109.66666666666669" width="100" height="101"/>
+                                <color key="tintColor" name="MyWeatherColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="FOy-Rl-m2v"/>
+                                    <constraint firstAttribute="height" constant="100" id="vk2-6M-PnR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IZ-2T-QXm">
+                                <rect key="frame" x="172.66666666666663" y="219.99999999999997" width="200.33333333333337" height="107.66666666666666"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="90"/>
+                                <color key="textColor" name="MyWeatherColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCZ-BM-6Tk">
+                                <rect key="frame" x="272.33333333333331" y="337.66666666666669" width="100.66666666666669" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <color key="textColor" name="MyWeatherColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4IZ-2T-QXm" firstAttribute="top" secondItem="vjm-dq-I4U" secondAttribute="bottom" constant="10" id="82d-R8-LFM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4IZ-2T-QXm" secondAttribute="trailing" constant="20" id="8Kw-08-LTn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lsy-ww-fZu" secondAttribute="trailing" id="BDJ-qa-uYc"/>
+                            <constraint firstItem="lsy-ww-fZu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="K4g-wE-3tq"/>
+                            <constraint firstItem="iCZ-BM-6Tk" firstAttribute="top" secondItem="4IZ-2T-QXm" secondAttribute="bottom" constant="10" id="UI4-52-vnZ"/>
+                            <constraint firstAttribute="bottom" secondItem="lsy-ww-fZu" secondAttribute="bottom" id="Uh8-46-7Fn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3et-2z-vlj" secondAttribute="trailing" constant="10" id="XtD-PR-giY"/>
+                            <constraint firstAttribute="trailing" secondItem="vjm-dq-I4U" secondAttribute="trailing" constant="20" id="ZQw-Qd-XOh"/>
+                            <constraint firstItem="lsy-ww-fZu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eA4-aS-HKi"/>
+                            <constraint firstAttribute="trailing" secondItem="iCZ-BM-6Tk" secondAttribute="trailing" constant="20" id="iYc-iQ-zhP"/>
+                            <constraint firstItem="vjm-dq-I4U" firstAttribute="top" secondItem="3et-2z-vlj" secondAttribute="bottom" constant="10" id="jdY-NJ-CMd"/>
+                            <constraint firstItem="3et-2z-vlj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="kYQ-YA-HdJ"/>
+                            <constraint firstItem="3et-2z-vlj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="yrw-FE-5P0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="iCZ-BM-6Tk" id="Ar5-aH-cJ6"/>
+                        <outlet property="temperatureLabel" destination="4IZ-2T-QXm" id="QgE-eK-QQW"/>
+                        <outlet property="textField" destination="hig-3k-o4v" id="45U-iG-lnd"/>
+                        <outlet property="weatherImageView" destination="vjm-dq-I4U" id="AXf-8J-jqX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122.90076335877862" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="662" height="662"/>
+        <image name="cloud.rain" catalog="system" width="126" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="pencil.tip.crop.circle" catalog="system" width="128" height="123"/>
+        <namedColor name="MyWeatherColor">
+            <color red="0.15299999713897705" green="0.25900000333786011" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

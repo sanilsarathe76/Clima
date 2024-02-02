@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherViewController: UIViewController {
     
@@ -14,17 +15,31 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
-    var manager = WeatherManager()
+    var weatherManager = WeatherManager()
+    var coordinates = (CLLocationDegrees(), CLLocationDegrees())
+    
+    let locationManger = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        manager.delegate = self
+        locationManger.delegate = self
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.requestLocation() // this will give us current location only one time.
+        
+        /*if we want updated location of user or car like navigation type of apps then we can use :-
+        locationManger.startUpdatingLocation()*/
+        weatherManager.delegate = self
         textField.delegate = self
         textField.placeholder = "Type something"
     }
     
     @IBAction func onClickSearch(_ sender: Any) {
         textField.endEditing(true)
+    }
+    
+    @IBAction func onClickCurrentWeatherButton(_ sender: Any) {
+        //when we requestLocation the didUpdateLocations method triggered.
+        locationManger.requestLocation()
     }
 }
 
@@ -46,7 +61,7 @@ extension WeatherViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = textField.text {
             textField.text = ""
-            manager.fetchWeather(cityName: city)
+            weatherManager.fetchWeather(cityName: city)
         }
     }
     
@@ -59,7 +74,7 @@ extension WeatherViewController: UITextFieldDelegate {
         
         if let temperatureString = data.temperatureString {
             DispatchQueue.main.async {
-                self.temperatureLabel.text = temperatureString
+                self.temperatureLabel.text = "\(temperatureString) °C"
             }
         }
         
@@ -68,6 +83,24 @@ extension WeatherViewController: UITextFieldDelegate {
                 self.cityLabel.text = cityName
             }
         }
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Did Update location Called!!!")
+        if let location = locations.last {
+            locationManger.stopUpdatingLocation()
+            coordinates.0 = location.coordinate.latitude
+            coordinates.1 = location.coordinate.longitude
+            weatherManager.fetchWeatherUsingLatLng(coordinates.0, coordinates.1)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Not able to get location", error)
     }
 }
 
